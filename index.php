@@ -1,5 +1,4 @@
 <?php
-// ดักจับชื่อลิงก์ที่เข้าใช้งาน ถ้าในลิงก์มีคำว่า apache ให้โชว์ APACHE ถ้าไม่มีให้โชว์ NGINX
 $host_url = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
 $server_name = (stripos($host_url, 'apache') !== false) ? 'APACHE' : 'NGINX';
 
