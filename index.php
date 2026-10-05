@@ -1,7 +1,9 @@
 <?php
-// ตรวจสอบชนิดของ Server (NGINX หรือ APACHE) เพื่อนำไปแสดงผล
-$server_software = isset($_SERVER['SERVER_SOFTWARE']) ? $_SERVER['SERVER_SOFTWARE'] : '';
-$server_name = (stripos($server_software, 'nginx') !== false) ? 'NGINX' : 'APACHE';
+// ดักจับชื่อลิงก์ที่เข้าใช้งาน ถ้าในลิงก์มีคำว่า apache ให้โชว์ APACHE ถ้าไม่มีให้โชว์ NGINX
+$host_url = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '';
+$server_name = (stripos($host_url, 'apache') !== false) ? 'APACHE' : 'NGINX';
+
+// ... (ส่วนโค้ดต่อฐานข้อมูลด้านล่างปล่อยไว้เหมือนเดิม) ...
 
 // ตั้งค่าการเชื่อมต่อฐานข้อมูล MySQL (ดึงค่าจาก Environment Variables ของ Railway)
 $host = getenv('MYSQLHOST') ?: 'mysql.railway.internal';
